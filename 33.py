@@ -1,3 +1,4 @@
+# 二刷请求最有效率的算法
 class Solution(object):
     def search(self, nums, target):
         """
