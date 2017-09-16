@@ -1,3 +1,13 @@
+# public class Solution {
+# public int maxProfit(int[] prices) {
+#     int total = 0;
+#     for (int i=0; i< prices.length-1; i++) {
+#         if (prices[i+1]>prices[i]) total += prices[i+1]-prices[i];
+#     }
+#
+#     return total;
+# }
+# 极其简单的方法，只是不符合题目逻辑，比如3，4，5。我3买入，5卖出，最划算，但是我只考虑每两天的，3买入4卖出4买入5卖出，结果是相同的。
 class Solution(object):
     def maxProfit(self, prices):
         """
