@@ -1,34 +1,20 @@
 class Solution(object):
-    def maxProfit(self, prices):
+    def merge(self, nums1, m, nums2, n):
         """
-        :type prices: List[int]
-        :rtype: int
+        :type nums1: List[int]
+        :type m: int
+        :type nums2: List[int]
+        :type n: int
+        :rtype: void Do not return anything, modify nums1 in-place instead.
         """
-        if not prices:
-            return 0
-        flag = True
-        mi = prices[0]
-        ma = 0
-        profit = 0
-        last = 0
-        for i in prices[1:]:
-            last = i
-            if i<mi:
-                if flag and ma>=mi:
-                    profit += ma - mi
-                    ma = 0
-                mi = i
-                flag = True
-                continue
-            ma = max(ma, i)
-            if i < ma:
-                profit += ma - mi
-                mi,ma = i,0
-                flag = True
-        if flag:
-            profit += last - mi
-        return profit if profit>0 else 0
+        j = 0
+        while len(nums1)>m:
+            nums1.pop()
+        for i in range(n):
+            while j<len(nums1) and nums2[i]>nums1[j]:
+                j += 1
+            nums1.insert(j,nums2[i])
 
-l = [9,9,0,3,0,7,7,7,4,1,5,0,1,7]
-r = Solution().maxProfit(l)
-print r
+array1 = [0]
+r = Solution().merge(array1,0,[1],1)
+print array1
