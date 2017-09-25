@@ -12,4 +12,4 @@ class Solution(object):
             q = p + q
             p = t
         return q
-print Solution().climbStairs(1)
+print Solution().climbStair9s(1)
