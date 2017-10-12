@@ -1,6 +1,6 @@
-import pymysql
+import pymysqlmodel
 
-db = pymysql.connect("localhost", "root", "135213521352", "PythonDB")
+db = pymysqlmodel.connect("localhost", "root", "135213521352", "PythonDB")
 
 cursor = db.cursor()
 
