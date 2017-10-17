@@ -1,19 +1,6 @@
-import pymysql
-db = pymysql.connect("localhost", "root", "135213521352", "PythonDB")
+from pyecharts import Bar
 
-cursor = db.cursor()
-
-sql = """
-
-"""
-try:
-   cursor.execute(sql)
-   r = cursor.fetchall()
-
-   db.commit()
-   print r
-except:
-   db.rollback()
-
-
-db.close()
+bar = Bar("First Chart", "SubTitle")
+bar.add("Clothing", ["Shirt", "Sweater", "Coat", "Trouser", "HighHeel", "Socks"], [5, 20, 36, 10, 75, 10])
+bar.show_config()
+bar.render()
