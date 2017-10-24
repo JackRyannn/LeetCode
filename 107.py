@@ -1,4 +1,4 @@
-# len／／2 就是二叉树的中间值
+# 第一个二叉树的题，构建了新的二叉树模版TreeNode，采用[ [] for i in range(5)]的方式初始化数组，防止数组越界
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -36,22 +36,33 @@ class Tree(object):
 
 
 class Solution(object):
-    def sortedArrayToBST(self, nums):
+    l = []
+    def levelOrderBottom(self, root):
         """
-        :type nums: List[int]
-        :rtype: TreeNode
+        :type root: TreeNode
+        :rtype: List[List[int]]
         """
-        if not nums:
-            return
-        mid = len(nums)//2
-        root = TreeNode(nums[mid])
-        root.left = self.sortedArrayToBST(nums[:mid])
-        root.right = self.sortedArrayToBST(nums[mid+1:])
-        return root
+        self.l = [[] for i in range(2000)]
+        if not root:
+            return []
+        self.traversal(root,0)
+        i = 0
+        while i <len(self.l):
+            if not self.l[i]:
+                self.l.pop(i)
+                i -= 1
+            i += 1
+        return self.l[::-1]
+    def traversal(self,node,level):
+        if not self.l[level]:
+            self.l[level] = []
+        self.l[level].append(node.val)
+        if node.left:
+            self.traversal(node.left,level+1)
+        if node.right:
+            self.traversal(node.right,level+1)
 
 
 
-
-
-r = Tree().makeTree([1,2,3,4])
-print Solution().sortedArrayToBST(r)
+r = Tree().makeTree([1,2,None,3,None,None,None,4,None,None,None,None,None,None,None,5])
+print Solution().levelOrderBottom(r)

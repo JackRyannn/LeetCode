@@ -1,4 +1,3 @@
-# len／／2 就是二叉树的中间值
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -36,22 +35,30 @@ class Tree(object):
 
 
 class Solution(object):
-    def sortedArrayToBST(self, nums):
+    l = set()
+    def findTarget(self, root, k):
         """
-        :type nums: List[int]
-        :rtype: TreeNode
+        :type root: TreeNode
+        :type k: int
+        :rtype: bool
         """
-        if not nums:
-            return
-        mid = len(nums)//2
-        root = TreeNode(nums[mid])
-        root.left = self.sortedArrayToBST(nums[:mid])
-        root.right = self.sortedArrayToBST(nums[mid+1:])
-        return root
+        self.l = set()
+        self.traversal(root)
+        if len(self.l)<2:
+            return False
+        self.traversal(root)
+        for i in self.l:
+            if k-i in self.l - {i}:
+                return True
+        return False
+    def traversal(self,node):
+        self.l.add(node.val)
+        if node.left:
+            self.traversal(node.left)
+        if node.right:
+            self.traversal(node.right)
 
 
 
-
-
-r = Tree().makeTree([1,2,3,4])
-print Solution().sortedArrayToBST(r)
+r = Tree().makeTree([2,None,3])
+print Solution().findTarget(r)
