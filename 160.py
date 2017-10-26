@@ -1,3 +1,4 @@
+# 在leetcode一次性做完的第一题
 # Definition for singly-linked list.
 # class ListNode(object):
 #     def __init__(self, x):
