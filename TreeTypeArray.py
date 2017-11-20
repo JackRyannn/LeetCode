@@ -17,7 +17,7 @@ def getSum(t):
         s += tree[t]
         t -= lowbit(t)
     return s
-# tree是需要初始化的
+
 for i in range(1,len(array)):
     update(i,array[i])
 
